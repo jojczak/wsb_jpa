@@ -19,6 +19,14 @@ public class AddressEntity {
 
 	private String postalCode;
 
+	@ManyToOne
+	@JoinColumn(name = "doctor_id", nullable = true)
+	private DoctorEntity doctor;
+
+	@ManyToOne
+	@JoinColumn(name = "patient_id", nullable = true)
+	private PatientEntity patient;
+
 	public Long getId() {
 		return id;
 	}
@@ -59,4 +67,19 @@ public class AddressEntity {
 		this.postalCode = postalCode;
 	}
 
+	public DoctorEntity getDoctor() {
+		return doctor;
+	}
+
+	public void setDoctor(DoctorEntity doctor) {
+		this.doctor = doctor;
+	}
+
+	public PatientEntity getPatient() {
+		return patient;
+	}
+
+	public void setPatient(PatientEntity patient) {
+		this.patient = patient;
+	}
 }
