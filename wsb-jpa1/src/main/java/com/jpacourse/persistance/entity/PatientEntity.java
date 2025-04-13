@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -33,6 +34,8 @@ public class PatientEntity {
 
 	@OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<AddressEntity> addresses = new ArrayList<>();
+
+	@OneToMany(mappedBy = "patient")
 
 	public Long getId() {
 		return id;
