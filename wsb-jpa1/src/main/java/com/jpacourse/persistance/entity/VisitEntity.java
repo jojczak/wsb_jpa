@@ -1,8 +1,9 @@
 package com.jpacourse.persistance.entity;
 
-import java.time.LocalDateTime;
-
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "VISIT")
@@ -24,6 +25,10 @@ public class VisitEntity {
 	@ManyToOne
 	@JoinColumn(name = "patient_id", nullable = false)
 	private PatientEntity patient;
+
+	@ManyToOne
+	@JoinColumn(name = "medical_treatment_id", nullable = false)
+	private MedicalTreatmentEntity medicalTreatment;
 
 	public Long getId() {
 		return id;
@@ -64,4 +69,8 @@ public class VisitEntity {
 	public void setPatient(PatientEntity patient) {
 		this.patient = patient;
 	}
+
+	public MedicalTreatmentEntity getMedicalTreatment() { return medicalTreatment; }
+
+	public void setMedicalTreatment(MedicalTreatmentEntity medicalTreatments) { this.medicalTreatment = medicalTreatments; }
 }

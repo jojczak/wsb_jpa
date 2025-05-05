@@ -2,11 +2,12 @@ package com.jpacourse.mapper;
 
 import com.jpacourse.dto.AddressTO;
 import com.jpacourse.dto.PatientTO;
+import com.jpacourse.dto.VisitTO;
 import com.jpacourse.persistance.entity.PatientEntity;
 
 import java.util.List;
 
-public class PatientMapper {
+public final class PatientMapper {
     public static PatientTO mapToTO(PatientEntity entity) {
         if (entity == null) {
             return null;
@@ -26,6 +27,12 @@ public class PatientMapper {
                 .toList();
 
         patientTO.setAddresses(addressTOs);
+
+        List<VisitTO> visitTOs = entity.getVisits()
+                .stream()
+                .map(VisitMapper::mapToTO)
+                .toList();
+        patientTO.setVisits(visitTOs);
 
         return patientTO;
     }

@@ -1,8 +1,10 @@
 package com.jpacourse.persistance.entity;
 
 import com.jpacourse.persistance.enums.TreatmentType;
-
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "MEDICAL_TREATMENT")
@@ -18,9 +20,8 @@ public class MedicalTreatmentEntity {
 	@Enumerated(EnumType.STRING)
 	private TreatmentType type;
 
-	@ManyToOne
-	@JoinColumn(name = "visit_id", nullable = false)
-	private VisitEntity visit;
+	@OneToMany(mappedBy = "medicalTreatment", cascade = CascadeType.ALL)
+	private List<VisitEntity> visits = new ArrayList<>();
 
 	public Long getId() {
 		return id;
@@ -46,11 +47,11 @@ public class MedicalTreatmentEntity {
 		this.type = type;
 	}
 
-	public VisitEntity getVisit() {
-		return visit;
+	public List<VisitEntity> getVisit() {
+		return visits;
 	}
 
-	public void setVisit(VisitEntity visit) {
-		this.visit = visit;
+	public void setVisit(List<VisitEntity> visits) {
+		this.visits = visits;
 	}
 }

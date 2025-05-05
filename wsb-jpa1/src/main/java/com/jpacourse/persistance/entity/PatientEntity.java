@@ -1,11 +1,10 @@
 package com.jpacourse.persistance.entity;
 
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import jakarta.persistence.*;
 
 @Entity
 @Table(name = "PATIENT")
@@ -35,7 +34,8 @@ public class PatientEntity {
 	@OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<AddressEntity> addresses = new ArrayList<>();
 
-	@OneToMany(mappedBy = "patient")
+	@OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<VisitEntity> visits = new ArrayList<>();
 
 	public Long getId() {
 		return id;
@@ -100,4 +100,8 @@ public class PatientEntity {
 	public void setAddresses(List<AddressEntity> addresses) {
 		this.addresses = addresses;
 	}
+
+	public List<VisitEntity> getVisits() { return visits; }
+
+	public void setVisits(List<VisitEntity> visits) { this.visits = visits; }
 }

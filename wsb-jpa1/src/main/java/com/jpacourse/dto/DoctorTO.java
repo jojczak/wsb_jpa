@@ -1,10 +1,9 @@
 package com.jpacourse.dto;
 
-import java.io.Serializable;
-import java.time.LocalDate;
+import com.jpacourse.persistance.enums.Specialization;
 import java.util.List;
 
-public class PatientTO implements Serializable {
+public class DoctorTO {
     private Long id;
 
     private String firstName;
@@ -15,13 +14,11 @@ public class PatientTO implements Serializable {
 
     private String email;
 
-    private String patientNumber;
+    private String doctorNumber;
 
-    private LocalDate dateOfBirth;
+    private Specialization specialization;
 
     private List<AddressTO> addresses;
-
-    private List<VisitTO> visits;
 
     public Long getId() { return id; }
 
@@ -43,19 +40,15 @@ public class PatientTO implements Serializable {
 
     public void setEmail(String email) { this.email = email; }
 
-    public String getPatientNumber() { return patientNumber; }
+    public String getDoctorNumber() { return doctorNumber; }
 
-    public void setPatientNumber(String patientNumber) { this.patientNumber = patientNumber; }
+    public void setDoctorNumber(String doctorNumber) { this.doctorNumber = doctorNumber; }
 
-    public LocalDate getDateOfBirth() { return dateOfBirth; }
+    public Specialization getSpecialization() { return specialization; }
 
-    public void setDateOfBirth(LocalDate dateOfBirth) { this.dateOfBirth = dateOfBirth; }
+    public void setSpecialization(Specialization specialization) { this.specialization = specialization; }
 
     public List<AddressTO> getAddresses() { return addresses; }
 
     public void setAddresses(List<AddressTO> addresses) { this.addresses = addresses; }
-
-    public List<VisitTO> getVisits() { return visits; }
-
-    public void setVisits(List<VisitTO> visits) { this.visits = visits; }
 }
