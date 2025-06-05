@@ -23,6 +23,8 @@ public class PatientTO implements Serializable {
 
     private List<VisitTO> visits;
 
+    private Double weight;
+
     public Long getId() { return id; }
 
     public void setId(Long id) { this.id = id; }
@@ -58,4 +60,8 @@ public class PatientTO implements Serializable {
     public List<VisitTO> getVisits() { return visits; }
 
     public void setVisits(List<VisitTO> visits) { this.visits = visits; }
+
+    public Double getWeight() { return weight; }
+
+    public void setWeight(Double weight) { this.weight = weight; }
 }

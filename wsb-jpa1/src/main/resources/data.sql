@@ -5,12 +5,12 @@ VALUES ('Jan', 'Kowalski', '123456789', 'jan.kowalski@example.com', 'DOC123', 'G
        ('Karolina', 'Mazur', '321654987', 'karolina.mazur@example.com', 'DOC321', 'OCULIST');
 
 
-INSERT INTO PATIENT (first_name, last_name, telephone_number, email, patient_number, date_of_birth)
-VALUES ('Piotr', 'Wiśniewski', '111222333', 'piotr.wisniewski@example.com', 'PAT001', '1985-06-15'),
-       ('Marta', 'Zielińska', '444555666', 'marta.zielinska@example.com', 'PAT002', '1992-11-23'),
-       ('Kamil', 'Nowicki', '555777888', 'kamil.nowicki@example.com', 'PAT003', '2001-09-05'),
-       ('Alicja', 'Jankowska', '666999000', 'alicja.jankowska@example.com', 'PAT004', '1978-04-17'),
-       ('Robert', 'Lewandowski', '777888999', 'robert.lewandowski@example.com', 'PAT005', '1995-01-30');
+INSERT INTO PATIENT (first_name, last_name, telephone_number, email, patient_number, date_of_birth, weight)
+VALUES ('Piotr', 'Wiśniewski', '111222333', 'piotr.wisniewski@example.com', 'PAT001', '1985-06-15', 60.1),
+       ('Marta', 'Zielińska', '444555666', 'marta.zielinska@example.com', 'PAT002', '1992-11-23', 70.2),
+       ('Kamil', 'Nowicki', '555777888', 'kamil.nowicki@example.com', 'PAT003', '2001-09-05', 80.3),
+       ('Alicja', 'Jankowska', '666999000', 'alicja.jankowska@example.com', 'PAT004', '1978-04-17', 90.4),
+       ('Robert', 'Lewandowski', '777888999', 'robert.lewandowski@example.com', 'PAT005', '1995-01-30', 74.0);
 
 
 INSERT INTO ADDRESS (city, address_line1, address_line2, postal_code, doctor_id, patient_id)

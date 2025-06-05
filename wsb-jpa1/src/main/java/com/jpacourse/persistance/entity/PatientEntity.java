@@ -1,6 +1,8 @@
 package com.jpacourse.persistance.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -31,10 +33,17 @@ public class PatientEntity {
 	@Column(nullable = false)
 	private LocalDate dateOfBirth;
 
+	@Column(nullable = false)
+	private Double weight;
+
+	@Version
+	private Long version;
+
 	@OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<AddressEntity> addresses = new ArrayList<>();
 
 	@OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
+	@Fetch(FetchMode.SELECT)
 	private List<VisitEntity> visits = new ArrayList<>();
 
 	public Long getId() {
@@ -104,4 +113,12 @@ public class PatientEntity {
 	public List<VisitEntity> getVisits() { return visits; }
 
 	public void setVisits(List<VisitEntity> visits) { this.visits = visits; }
+
+	public Double getWeight() { return weight; }
+
+	public void setWeight(Double weight) { this.weight = weight; }
+
+	public Long getVersion() { return version; }
+
+	public void setVersion(Long version) { this.version = version; }
 }

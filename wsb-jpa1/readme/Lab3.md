@@ -27,3 +27,14 @@ Nastepnie zmien adnotacje na
 i powtorz test i obserwacje. Wnioski zapisz na dole tego pliku i skomituj.
 
 Do wybranej encji dodaj wersjonowanie, oraz napisz test (w DAO) sprawdzajacy rownolegla modyfikacje (OptimisticLock)
+
+Wnioski z testów strategii pobierania:
+Analizując zachowanie różnych strategii pobierania danych, zauważyłem znaczące różnice między FetchMode.SELECT a FetchMode.JOIN.
+W przypadku SELECT widziałem w logach, że Hibernate wykonuje najpierw zapytanie o główną encję (pacjenta), a dopiero potem
+osobne zapytanie o powiązane wizyty. Z jednej strony generuje to więcej zapytań do bazy, ale z drugiej może być sensowne
+gdy nie zawsze potrzebujemy tych powiązanych danych. Natomiast przy użyciu JOIN wszystko pobierane jest za jednym razem
+w logach widać jedno, większe zapytanie ze złączeniem tabel. Jest to zazwyczaj wydajniejsze, bo redukuje liczbę połączeń
+z bazą, ale zauważyłem też, że ilość pobieranych danych jest większa. 
+Po przeprowadzonych testach mogę stwierdzić, że wybór między tymi strategiami powinien zależeć od konkretnego przypadku użycia
+czy częściej będziemy potrzebować pełnych danych (wtedy JOIN), czy może czasem wystarczy nam sama encja główna (wtedy 
+SELECT może być lepszym wyborem).
